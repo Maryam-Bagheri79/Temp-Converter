@@ -19,11 +19,18 @@ resetBtn.addEventListener('click', function () {
     newElmH.remove()
     input.value = ''
 
+    document.querySelector('.div-erco').classList.remove('error')
+    document.querySelector('.div-erco').classList.remove('correct')
+
 })
 
 changetBtn.addEventListener('click', function () {
 
     newElmH.remove()
+
+    document.querySelector('.div-erco').classList.remove('error')
+    document.querySelector('.div-erco').classList.remove('correct')
+
 
     input.value = ''
     let placeHolder = input.placeholder
@@ -90,5 +97,6 @@ convertBtn.addEventListener('click', function () {
         }
 
     }
+
 
 })
