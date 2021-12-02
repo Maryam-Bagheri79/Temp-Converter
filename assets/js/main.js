@@ -6,36 +6,27 @@ let changetBtn = document.querySelector('.change')
 
 let title = document.querySelector('#title')
 
-let error = document.querySelector('.div-erco')
-
-let newElmH = document.createElement('h3')
+let error = document.querySelector('.erco')
 
 let input = document.getElementById('input')
 
-resetBtn.addEventListener('click', function () {
+function reset() {
 
-    input.placeholder = '°C'
-    title.innerHTML = 'Converter °C to °F'
-    newElmH.remove()
     input.value = ''
+    error.innerHTML = ''
 
-    document.querySelector('.div-erco').classList.remove('error')
-    document.querySelector('.div-erco').classList.remove('correct')
+}
 
-})
-
-changetBtn.addEventListener('click', function () {
-
-    newElmH.remove()
-
-    document.querySelector('.div-erco').classList.remove('error')
-    document.querySelector('.div-erco').classList.remove('correct')
+function change() {
 
 
     input.value = ''
-    let placeHolder = input.placeholder
 
-    if (placeHolder === '°C') {
+    error.innerHTML = ''
+
+    // let placeHolder = input.placeholder
+
+    if (input.placeholder === '°C') {
 
         title.innerHTML = 'Converter °F to °C'
         input.placeholder = '°F'
@@ -48,55 +39,53 @@ changetBtn.addEventListener('click', function () {
         document.title = '°C to °F'
 
     }
-})
+}
 
-convertBtn.addEventListener('click', function () {
+function convert() {
 
     let inputValue = input.value
 
     if (inputValue === '') {
 
-        newElmH.innerHTML = 'Write Correct Value!'
-        error.append(newElmH)
+        error.innerHTML = 'Write Correct Value!'
 
-        document.querySelector('.div-erco').classList.remove('correct')
-        document.querySelector('.div-erco').classList.add('error')
-        // console.log(error.append('Write Correct Value!', newElmH))
+        error.style.color = 'rgb(179, 46, 46)'
+
     }
     else if (isNaN(+inputValue)) {
 
-        newElmH.innerHTML = 'Wrong Value!'
-        error.append(newElmH)
+        error.innerHTML = 'Wrong Value!'
 
-        document.querySelector('.div-erco').classList.remove('correct')
-        document.querySelector('.div-erco').classList.add('error')
-
+        error.style.color = 'rgb(179, 46, 46)'
 
     } else {
 
-        let placeHolder = input.placeholder
+        // let placeHolder = input.placeholder
 
-        if (placeHolder === '°C') {
+        if (input.placeholder === '°C') {
 
             let far = +inputValue * 9 / 5 + 32;
-            newElmH.innerHTML = +inputValue + ' °C is ' + far + ' °F '
 
-            error.append(newElmH)
-            document.querySelector('.div-erco').classList.remove('error')
-            document.querySelector('.div-erco').classList.add('correct')
+            error.innerHTML = +inputValue + ' °C is ' + far + ' °F '
+
+            error.style.color = 'rgb(31, 128, 80)'
 
         } else {
 
-            let cel = (+inputValue - 32) * 5 / 9
-            newElmH.innerHTML = +inputValue + ' °F is ' + cel + ' °C '
+            let cel = (+inputValue - 32) * 5 / 9;
 
-            error.append(newElmH)
-            document.querySelector('.div-erco').classList.remove('error')
-            document.querySelector('.div-erco').classList.add('correct')
+            error.innerHTML = +inputValue + ' °F is ' + cel + ' °C '
+
+            error.style.color = 'rgb(31, 128, 80)'
+
 
         }
 
     }
 
+}
+resetBtn.addEventListener('click', reset)
 
-})
+changetBtn.addEventListener('click', change)
+
+convertBtn.addEventListener('click', convert)

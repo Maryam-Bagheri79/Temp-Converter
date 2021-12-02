@@ -52,7 +52,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .convert,
@@ -83,18 +83,14 @@ body {
   box-shadow: 3px 3px 3px rgb(179, 211, 211);
 }
 
-.error {
-  color: rgb(179, 46, 46);
-  margin-top: 3rem;
-}
-
-.correct {
-  color: rgb(31, 128, 80);
-  margin-top: 3rem;
-}
-
-div.erco {
+.erco {
+  /* margin: 10px 0 50px; */
+  margin-top: 30px;
   margin-bottom: 0;
+  font-size: 25px;
+  height: 1em;
+  letter-spacing: 1px;
+  color: rgb(31, 128, 80);
 }
 
 @media screen and (max-width: 760px) {
